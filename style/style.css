@@ -117,7 +117,6 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-right: 20px; */
 }
 
 .right_icons a {
@@ -142,13 +141,12 @@ nav {
 /* Main Section */
 main {
   display: flex;
-  position: relative;
-  /* top: 90px; */
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 /* sidebar */
 .sidebar {
-  float: left;
   width: 18%;
   height: 100vh;
   overflow-y: scroll;
@@ -169,8 +167,6 @@ main {
   align-items: center;
   padding: 5px;
   box-sizing: border-box;
-  /* margin: 15px; */
-  /* border-radius: 10px; */
   gap: 8px;
 }
 
@@ -222,16 +218,14 @@ main {
   height: auto;
   padding: 0px 0px 10px 30px;
   box-sizing: border-box;
-  /* background-color: #fff */
   margin-top: 60px;
   background-color: #fff;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 
 .topbar_container {
   background-color: #fff;
   height: 50px;
-  /* max-width: 100%; */
   width: 82%;
   display: flex;
   justify-content: flex-start;
@@ -270,19 +264,22 @@ main {
 
 .cards_holder {
   width: 100%;
-  height: 100vh;
   background-color: #fff;
-  /* margin-top: 60px; */
   padding-top: 60px;
-  display: flex;
-  flex-wrap: wrap;
+  padding-right: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   gap: 15px;
   overflow-x: scroll;
 }
 
+.cards_holder::-webkit-scrollbar {
+  display: none;
+}
+
 .card_wrapper {
   height: auto;
-  width: 250px;
 }
 
 .card_wrapper:hover {
@@ -336,14 +333,8 @@ main {
 }
 
 .shorts_container {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
-  display: flex;
-  justify-content: space-betweenx;
-  flex-wrap: wrap;
   width: 100%;
   margin-bottom: 20px;
-  align-items: center;
 }
 
 .shorts_card {
@@ -353,6 +344,7 @@ main {
   background-color: red;
   margin: 10px;
   box-sizing: border-box;
+  display: inline-block;
 }
 
 .shorts_card:hover {
@@ -369,26 +361,54 @@ main {
 .horizontal {
   width: 98%;
   border-top: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
   margin-bottom: 15px;
   margin-top: 15px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.horizontal::-webkit-scrollbar {
+  display: none;
 }
 
 .horizontal h3 {
   margin-top: 20px;
 }
 
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 20%;
+  }
+  .cards_holder {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .sidebar {
+    width: 30%;
+  }
+  .cards_holder {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .leftside_icons {
     display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .cards_holder {
+    display: block;
+  }
+
+  .card_wrapper {
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     width: 70%;
-  }
-
-  .sidebar {
-    width: 30%;
   }
 }
